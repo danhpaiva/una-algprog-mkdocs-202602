@@ -1,5 +1,5 @@
-site_name: "Sua Disciplina - UNA"
-site_url: https://danhpaiva.github.io/una-uc-mkdocs-template/
+site_name: "Algoritmos e Programacao - UNA (2026/2)"
+site_url: https://danhpaiva.github.io/una-algprog-mkdocs-202602
 site_author: Daniel Paiva
 
 theme:
@@ -29,11 +29,41 @@ theme:
 
 nav:
   - Home: index.md
-  - Guia do Professor: setup.md
+  # - Guia do Professor: setup.md
   - 📖 Aulas:
-      - Introdução: aulas/01-introducao.md
-  - 📝 Atividades:
-      - Projeto 01: trabalhos/projeto-01.md
+      - 01. Pensamento Computacional e Lógica: aulas/01-aula.md
+      - 02. Lógica de Programação e Fluxogramas: aulas/02-aula.md
+      - 03. Variáveis e Operadores Matemáticos: aulas/03-aula.md
+      - 04. Operadores Relacionais e Lógicos: aulas/04-aula.md
+      - 05. Boas Práticas na Construção de Algoritmos: aulas/05-aula.md
+      - 06. Tipos de Dados Primitivos e Compostos: aulas/06-aula.md
+      - "07. Estruturas de Controle: IF-ELSE": aulas/07-aula.md
+      - "08. Estruturas de Controle: SWITCH-CASE": aulas/08-aula.md
+      - "09. Repetição: WHILE e DO-WHILE": aulas/09-aula.md
+      - "10. Repetição: FOR e FOREACH": aulas/10-aula.md
+      - 11. Vetores: aulas/11-aula.md
+      - 12. Funções e Procedimentos: aulas/12-aula.md
+      - 13. Estrutura de Dados: aulas/13-aula.md
+      - 14. Introdução à POO: aulas/14-aula.md
+      - 15. POO na Prática: aulas/15-aula.md
+  - 📝 Listas:
+      - Lista 01: listas/01-lista.md
+      - Lista 02: listas/02-lista.md
+      - Lista 03: listas/03-lista.md
+      - Lista 04: listas/04-lista.md
+      - Lista 05: listas/05-lista.md
+      - Lista 06: listas/06-lista.md
+      - Lista 07: listas/07-lista.md
+      - Lista 08: listas/08-lista.md
+      - Lista 09: listas/09-lista.md
+      - Lista 10: listas/10-lista.md
+      - Lista 11: listas/11-lista.md
+      - Lista 12: listas/12-lista.md
+      - Lista 13: listas/13-lista.md
+      - Lista 14: listas/14-lista.md
+      - Lista 15: listas/15-lista.md
+  # - 📝 Atividades:
+  #    - Projeto 01: trabalhos/projeto-01.md
 
 plugins:
   - search
@@ -42,9 +72,19 @@ plugins:
 markdown_extensions:
   - admonition
   - pymdownx.details
-  - pymdownx.superfences
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
   - pymdownx.tabbed:
       alternate_style: true
+  - pymdownx.arithmatex:
+      generic: true
+
+extra_javascript:
+  - https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js
+
 # Para habilitar estatísticas, crie um ID no Google Analytics e preencha abaixo:
 # extra:
 #   analytics:
