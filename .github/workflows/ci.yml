@@ -6,16 +6,18 @@ on:
       - develop
 
 permissions:
-  contents: write
+  contents: read
   pages: write
   id-token: write
 
+# Evita runs sobrepostos disparando deploys concorrentes para o mesmo ambiente.
+concurrency:
+  group: pages-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
-  deploy:
+  build:
     runs-on: ubuntu-latest
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - uses: actions/checkout@v4
         with:
@@ -39,6 +41,15 @@ jobs:
         with:
           path: ./site
 
+  deploy:
+    # Job de deploy separado: se falhar por algo transitório, basta re-rodar
+    # apenas este job, reaproveitando o artefato do build (sem duplicar).
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
