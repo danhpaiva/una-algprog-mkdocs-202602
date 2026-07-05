@@ -51,8 +51,8 @@ O deploy está configurado via **GitHub Actions**. Para que funcione corretament
 
 1. Vá em **Settings > Actions > General**.
 2. Em **Workflow permissions**, selecione **"Read and write permissions"** e salve.
-3. Vá em **Settings > Pages** e em **Build and deployment > Source**, escolha **"GitHub Actions"**.
-4. Ao fazer um `git push` para as branches `main` ou `develop`, o site será atualizado automaticamente.
+3. Vá em **Settings > Pages** e em **Build and deployment > Source**, escolha **"GitHub Actions"** (não use *"Deploy from a branch"*).
+4. Ao fazer um `git push` para a branch `main`, o site é publicado automaticamente. A branch `develop` apenas valida o build, sem publicar.
 
 ---
 

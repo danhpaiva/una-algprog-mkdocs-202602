@@ -1,35 +1,47 @@
-# Una - UC MkDocs Template
+# Algoritmos e Programação — UNA (2026/2)
 
-Template padrão para documentação de Unidades Curriculares (UC) utilizando **MkDocs Material**.
+Site da disciplina construído com **MkDocs Material** e publicado no **GitHub Pages**.
 
-## 🚀 Como usar este template
-1. Clique no botão **"Use this template"** no topo deste repositório.
-2. Clone o seu novo repositório.
-3. Instale as dependências:
-   ```bash
-   python -m venv venv
-   .\venv\Scripts\Activate  # Windows
-   pip install -r requirements.txt
+🌐 **Site:** https://danhpaiva.github.io/una-algprog-mkdocs-202602
 
-4. Inicie o servidor local: mkdocs serve.
+## 🚀 Rodando localmente
 
-### 🛠️ Tecnologias inclusas
-MkDocs Material
+```bash
+python -m venv venv
+.\venv\Scripts\activate      # Windows
+# source venv/bin/activate   # Linux/Mac
+pip install -r requirements.txt
+mkdocs serve
+```
 
-Plugin de Busca (Search)
+Acesse `http://127.0.0.1:8000`. Para validar como no CI, use `mkdocs build --strict`.
 
-Plugin de Data de Revisão (Git Revision Date)
+## 📦 Publicação (GitHub Pages)
 
-#### 2. Subindo as alterações
-No seu terminal:
+O deploy é automático via GitHub Actions (`.github/workflows/ci.yml`):
 
-```powershell
-# Adicionar o requirements.txt e as mudanças no yml
-git add .
-git commit -m "docs: finalize template with requirements and guide"
-git push origin develop
+- **Somente a branch `main` publica** em produção. A branch `develop` apenas
+  valida o build (`mkdocs build --strict`), sem publicar.
+- O workflow é dividido em dois jobs (`build` e `deploy`), o que evita o erro
+  *"Multiple artifacts named github-pages"* ao re-executar o deploy.
 
-# (Opcional) Levar para a main
-git checkout main
-git merge develop
-git push origin main
+> [!IMPORTANT]
+> **Configuração obrigatória (uma vez por repositório):**
+> em **Settings → Pages → Build and deployment → Source**, escolha
+> **"GitHub Actions"** — **não** use *"Deploy from a branch"*.
+> Esta é a causa mais comum do erro *"Deployment failed, try again later"*.
+
+Também confira em **Settings → Actions → General → Workflow permissions** se está
+marcado **"Read and write permissions"**.
+
+## 🗂️ Estrutura
+
+```text
+docs/
+├── index.md         # Página inicial e cronograma
+├── aulas/           # Conteúdo das aulas
+├── listas/          # Listas de exercícios
+└── setup.md         # Guia do professor
+mkdocs.yml           # Configuração do site
+requirements.txt     # Dependências (pinadas)
+```
