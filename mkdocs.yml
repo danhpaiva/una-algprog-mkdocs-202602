@@ -1,0 +1,52 @@
+site_name: "Sua Disciplina - UNA"
+site_url: https://danhpaiva.github.io/una-uc-mkdocs-template/
+site_author: Daniel Paiva
+
+theme:
+  name: material
+  language: pt-BR
+  palette:
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/brightness-7
+        name: Mudar para modo escuro
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/brightness-4
+        name: Mudar para modo claro
+  features:
+    - navigation.sections
+    - navigation.expand # Deixa o menu lateral aberto por padrão
+    - navigation.top # Botão "Voltar ao topo" automático
+    - navigation.tracking # Atualiza a URL conforme o aluno rola a página
+    - content.code.copy # Botão de copiar código em um clique
+
+nav:
+  - Home: index.md
+  - Guia do Professor: setup.md
+  - 📖 Aulas:
+      - Introdução: aulas/01-introducao.md
+  - 📝 Atividades:
+      - Projeto 01: trabalhos/projeto-01.md
+
+plugins:
+  - search
+  - git-revision-date-localized
+
+markdown_extensions:
+  - admonition
+  - pymdownx.details
+  - pymdownx.superfences
+  - pymdownx.tabbed:
+      alternate_style: true
+# Para habilitar estatísticas, crie um ID no Google Analytics e preencha abaixo:
+# extra:
+#   analytics:
+#     provider: google
+#     property: !ENV [GA_ID, "G-XXXXXXXXXX"] # Busca nas variáveis de ambiente ou usa o padrão
