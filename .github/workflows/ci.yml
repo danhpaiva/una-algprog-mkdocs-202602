@@ -37,7 +37,7 @@ jobs:
       # Os passos de Pages só rodam na main: a develop apenas valida o build.
       - name: Setup Pages
         if: github.ref == 'refs/heads/main'
-        uses: actions/configure-pages@v5
+        uses: actions/configure-pages@v6
         with:
           enablement: true
 
