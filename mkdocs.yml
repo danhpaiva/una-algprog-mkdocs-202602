@@ -2,30 +2,52 @@ site_name: "Algoritmos e Programacao - UNA (2026/2)"
 site_url: https://danhpaiva.github.io/una-algprog-mkdocs-202602
 site_author: Daniel Paiva
 
+repo_url: https://github.com/danhpaiva/una-algprog-mkdocs-202602
+repo_name: danhpaiva/una-algprog-mkdocs-202602
+edit_uri: edit/main/docs/
+
 theme:
   name: material
   language: pt-BR
+  font:
+    text: Inter
+    code: JetBrains Mono
   palette:
+    # Estado 1: segue a preferência do sistema
+    - media: "(prefers-color-scheme)"
+      toggle:
+        icon: material/brightness-auto
+        name: Alternar para modo claro
+    # Estado 2: claro
     - media: "(prefers-color-scheme: light)"
       scheme: default
       primary: indigo
       accent: indigo
       toggle:
         icon: material/brightness-7
-        name: Mudar para modo escuro
+        name: Alternar para modo escuro
+    # Estado 3: escuro
     - media: "(prefers-color-scheme: dark)"
       scheme: slate
       primary: indigo
       accent: indigo
       toggle:
         icon: material/brightness-4
-        name: Mudar para modo claro
+        name: Alternar para modo automático
   features:
-    - navigation.sections
-    - navigation.expand # Deixa o menu lateral aberto por padrão
-    - navigation.top # Botão "Voltar ao topo" automático
-    - navigation.tracking # Atualiza a URL conforme o aluno rola a página
-    - content.code.copy # Botão de copiar código em um clique
+    - navigation.tabs # Seções de topo viram abas
+    - navigation.sections # Agrupa itens no menu lateral
+    - navigation.indexes # Permite página índice em seções
+    - navigation.top # Botão "Voltar ao topo"
+    - navigation.tracking # Atualiza a URL conforme a rolagem
+    - navigation.instant # Navegação SPA (sem recarregar a página)
+    - navigation.instant.progress # Barra de progresso no carregamento
+    - toc.follow # Sumário acompanha a leitura
+    - content.code.copy # Botão de copiar código
+    - content.tabs.link # Abas de conteúdo sincronizadas
+    - content.action.edit # Botão "editar esta página"
+    - search.suggest # Sugestões de busca
+    - search.highlight # Destaca termos buscados
 
 nav:
   - Home: index.md
@@ -66,7 +88,8 @@ nav:
   #    - Projeto 01: trabalhos/projeto-01.md
 
 plugins:
-  - search
+  - search:
+      lang: pt
   - git-revision-date-localized
 
 markdown_extensions:
