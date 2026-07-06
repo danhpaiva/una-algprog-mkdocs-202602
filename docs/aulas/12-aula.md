@@ -115,6 +115,57 @@ FimAlgoritmo
 
 ---
 
+## 📄 O "Contrato" de uma Função
+
+Antes de escrever o corpo, pense na **assinatura** — o contrato que a função promete cumprir. Ele responde a três perguntas:
+
+| Pergunta                    | Onde aparece            | Exemplo (`media`)         |
+| :-------------------------- | :---------------------- | :------------------------ |
+| O que ela **recebe**?       | parâmetros              | `n1, n2, n3: real`        |
+| O que ela **devolve**?      | tipo de retorno         | `: real`                  |
+| Como se **chama**?          | nome                    | `media`                   |
+
+```
+Funcao media(n1: real, n2: real, n3: real): real
+Inicio
+    Retorne (n1 + n2 + n3) / 3
+FimFuncao
+```
+
+Pensar no contrato primeiro deixa claro o que a função precisa **antes** de você se preocupar com *como* ela calcula — exatamente o que os exercícios de **Dobro**, **Maior de Dois** e **Média** pedem.
+
+---
+
+## 🔁 Função vs. Procedimento: qual escolher?
+
+A pergunta decisiva é: **"eu preciso de um resultado de volta?"**
+
+=== "Precisa de resultado → Função"
+    Calcular e devolver um valor que será usado depois. Ex.: `dobro(n)`, `maior(a, b)`, `celsiusParaFahrenheit(c)`.
+    ```
+    temp_f <- celsiusParaFahrenheit(37)   // guardo o retorno
+    ```
+
+=== "Só executa uma ação → Procedimento"
+    Fazer algo visível (imprimir, desenhar um menu) sem devolver valor. Ex.: `exibirMenu()`.
+    ```
+    exibirMenu()   // só chama; não há retorno para guardar
+    ```
+
+!!! tip "Chamando dentro de um laço"
+    No **Procedimento Menu** (Exercício 4), o `exibirMenu()` é chamado **dentro** de um `Repita`/`Enquanto`, mostrando as opções a cada volta. Um mesmo bloco, escrito uma vez, reutilizado sempre — o princípio DRY em ação.
+
+---
+
+## 📥 Como os Argumentos Chegam à Função
+
+Quando você chama `dobro(5)`, o valor `5` é **copiado** para o parâmetro `n` dentro da função. Alterar `n` lá dentro **não** muda a variável original de fora (isso se chama *passagem por valor* e é o comportamento padrão).
+
+!!! info "Por isso funções são seguras"
+    Como a função trabalha com uma cópia, ela não estraga acidentalmente os dados de quem a chamou. A comunicação acontece de forma controlada: entra por **parâmetros**, sai por **retorno**.
+
+---
+
 ## 📝 Desafios
 
 ??? abstract "Exercício 1: Função Dobro"
@@ -131,6 +182,15 @@ FimAlgoritmo
 
 ??? abstract "Exercício 5: Conversor Reutilizável"
     Crie uma função `celsiusParaFahrenheit(c)` e use-a para converter três temperaturas diferentes.
+
+---
+
+## 📚 Referências
+
+- **FORBELLONE, A. L. V.; EBERSPÄCHER, H. F.** *Lógica de Programação.* 3. ed. Pearson, 2005. — Cap. sobre modularização, funções e procedimentos.
+- **ASCENCIO, A. F. G.; CAMPOS, E. A. V. de.** *Fundamentos da Programação de Computadores.* 3. ed. Pearson, 2012. — Sub-rotinas, escopo e passagem de parâmetros.
+- **HUNT, A.; THOMAS, D.** *O Programador Pragmático.* Bookman, 2010. — Princípio DRY.
+- Wikipédia (PT): [Sub-rotina](https://pt.wikipedia.org/wiki/Sub-rotina) · [Escopo (computação)](https://pt.wikipedia.org/wiki/Escopo_(computa%C3%A7%C3%A3o)).
 
 ---
 

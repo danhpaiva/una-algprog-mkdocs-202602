@@ -108,6 +108,82 @@ Inicio
 
 ---
 
+## 🔽 Percorrendo na Ordem Inversa
+
+Para exibir os elementos "de trás para frente" (**Vetor Invertido**, Exercício 3), basta percorrer o índice em ordem decrescente com `passo -1`:
+
+```
+Para i de 5 ate 1 passo -1 faca
+    Escreval(numeros[i])
+FimPara
+```
+
+---
+
+## 🔢 Contando com uma Condição
+
+Muitos problemas pedem "quantos elementos satisfazem uma regra". A técnica é manter um **contador** que só cresce quando a condição é verdadeira — a base da **Contagem de Aprovados** (Exercício 4):
+
+```
+aprovados <- 0
+reprovados <- 0
+Para i de 1 ate 10 faca
+    Se (notas[i] >= 7) entao
+        aprovados <- aprovados + 1
+    Senao
+        reprovados <- reprovados + 1
+    FimSe
+FimPara
+Escreval("Aprovados: ", aprovados, " | Reprovados: ", reprovados)
+```
+
+---
+
+## 🎯 Maior e Menor ao Mesmo Tempo
+
+Dá para achar o **maior e o menor** num único percurso (Exercício 2). Comece supondo que o primeiro elemento é os dois, e vá ajustando:
+
+```
+maior <- numeros[1]
+menor <- numeros[1]
+Para i de 2 ate 8 faca
+    Se (numeros[i] > maior) entao
+        maior <- numeros[i]
+    FimSe
+    Se (numeros[i] < menor) entao
+        menor <- numeros[i]
+    FimSe
+FimPara
+Escreval("Maior: ", maior, " | Menor: ", menor)
+```
+
+---
+
+## 🔎 Busca com Posição
+
+Na **Busca** (Exercício 5) não basta dizer "achou": queremos **em qual posição**. Guardamos o índice quando encontramos:
+
+```
+Leia(procurado)
+posicao <- 0                     // 0 = "ainda não achei"
+Para i de 1 ate 6 faca
+    Se (numeros[i] = procurado) entao
+        posicao <- i
+    FimSe
+FimPara
+
+Se (posicao > 0) entao
+    Escreval("Encontrado na posição ", posicao)
+Senao
+    Escreval("Não está no vetor")
+FimSe
+```
+
+!!! info "Sentinela para 'não encontrado'"
+    Usar `posicao <- 0` como valor inicial é um truque comum: como o vetor começa no índice 1, o zero nunca é uma posição válida — logo, se ele permanecer 0 no final, sabemos que o valor não foi achado.
+
+---
+
 ## 📝 Desafios
 
 ??? abstract "Exercício 1: Média da Turma"
@@ -124,6 +200,15 @@ Inicio
 
 ??? abstract "Exercício 5: Busca"
     Leia 6 números em um vetor. Depois pergunte um número ao usuário e informe se ele está no vetor (e em qual posição).
+
+---
+
+## 📚 Referências
+
+- **ASCENCIO, A. F. G.; CAMPOS, E. A. V. de.** *Fundamentos da Programação de Computadores.* 3. ed. Pearson, 2012. — Cap. sobre vetores (variáveis compostas homogêneas).
+- **FORBELLONE, A. L. V.; EBERSPÄCHER, H. F.** *Lógica de Programação.* 3. ed. Pearson, 2005. — Estruturas de dados homogêneas.
+- **CORMEN, T. H. et al.** *Algoritmos: Teoria e Prática.* 3. ed. Elsevier, 2012. — Arrays e busca linear.
+- Wikipédia (PT): [Vetor (informática)](https://pt.wikipedia.org/wiki/Vetor_(inform%C3%A1tica)) · [Busca linear](https://pt.wikipedia.org/wiki/Busca_linear).
 
 ---
 

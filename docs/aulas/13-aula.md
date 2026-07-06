@@ -97,6 +97,71 @@ Inicio
 
 Essa combinação é a base de praticamente todo sistema real (um cadastro de clientes, um catálogo, uma agenda...).
 
+Para **percorrer** um vetor de registros, use um laço e acesse os campos com o ponto — é assim que se monta a **Agenda de Contatos** (Exercício 4):
+
+```
+Para i de 1 ate 5 faca
+    Escreva("Nome do contato ", i, ": ")
+    Leia(agenda[i].nome)
+    Escreva("Telefone: ")
+    Leia(agenda[i].telefone)
+FimPara
+
+Escreval("--- Lista de Contatos ---")
+Para i de 1 ate 5 faca
+    Escreval(agenda[i].nome, " - ", agenda[i].telefone)
+FimPara
+```
+
+---
+
+## ➕ Somando e Buscando numa Matriz
+
+Percorrer uma matriz para **somar tudo** (Exercício 1) segue o mesmo esqueleto do laço aninhado, só que acumulando:
+
+```
+soma <- 0
+Para i de 1 ate 3 faca
+    Para j de 1 ate 3 faca
+        soma <- soma + matriz[i, j]
+    FimPara
+FimPara
+Escreval("Soma total: ", soma)
+```
+
+Para achar o **maior valor e sua posição** (Exercício 5), guardamos também os índices `i` e `j` onde ele foi encontrado:
+
+```
+maior <- matriz[1, 1]
+linhaMaior <- 1
+colMaior <- 1
+Para i de 1 ate 2 faca
+    Para j de 1 ate 2 faca
+        Se (matriz[i, j] > maior) entao
+            maior <- matriz[i, j]
+            linhaMaior <- i
+            colMaior <- j
+        FimSe
+    FimPara
+FimPara
+Escreval("Maior: ", maior, " na posição [", linhaMaior, ",", colMaior, "]")
+```
+
+---
+
+## ↘️ A Diagonal Principal
+
+A **diagonal principal** de uma matriz quadrada é formada pelas células em que **a linha é igual à coluna** (`[1,1]`, `[2,2]`, `[3,3]`...). Reconhecer isso resolve o Exercício 2 sem precisar de dois laços:
+
+```
+Para i de 1 ate 3 faca
+    Escreva(matriz[i, i], " ")   // linha = coluna = i
+FimPara
+```
+
+!!! info "Por que só um laço?"
+    Como na diagonal `linha = coluna`, um único índice `i` já identifica a célula `matriz[i, i]`. O laço aninhado só é necessário quando precisamos visitar **todas** as células.
+
 ---
 
 ## 📝 Desafios
@@ -115,6 +180,15 @@ Essa combinação é a base de praticamente todo sistema real (um cadastro de cl
 
 ??? abstract "Exercício 5: Maior da Matriz"
     Leia uma matriz 2x2 e informe qual é o maior valor e em qual posição (linha, coluna) ele está.
+
+---
+
+## 📚 Referências
+
+- **ASCENCIO, A. F. G.; CAMPOS, E. A. V. de.** *Fundamentos da Programação de Computadores.* 3. ed. Pearson, 2012. — Matrizes e registros.
+- **TENENBAUM, A. M.; LANGSAM, Y.; AUGENSTEIN, M. J.** *Estruturas de Dados Usando C.* Pearson, 1995.
+- **CORMEN, T. H. et al.** *Algoritmos: Teoria e Prática.* 3. ed. Elsevier, 2012. — Introdução às estruturas de dados.
+- Wikipédia (PT): [Matriz (programação)](https://pt.wikipedia.org/wiki/Array#Vetores_multidimensionais) · [Estrutura de dados](https://pt.wikipedia.org/wiki/Estrutura_de_dados).
 
 ---
 

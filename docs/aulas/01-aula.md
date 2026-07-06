@@ -98,11 +98,56 @@ Antes de executar, simule o algoritmo manualmente.
 
 ---
 
+## 🧱 As 3 Estruturas que Formam Todo Algoritmo
+
+Por mais complexo que um programa pareça, ele é sempre construído com a combinação de apenas **três** tipos de estrutura. Guarde bem estes nomes, pois eles vão reaparecer no curso inteiro:
+
+=== "1. Sequência"
+    Um passo depois do outro, de cima para baixo, sem desvios.
+    *Exemplo: "pesquisar o celular → validar o vendedor → confirmar o saldo → finalizar a compra".*
+
+=== "2. Decisão (Seleção)"
+    O fluxo escolhe um caminho conforme uma condição ("se... então... senão").
+    *Exemplo: "**se** o frete for grátis, selecione-o; **senão**, avalie o prazo".*
+
+=== "3. Repetição (Laço)"
+    Um trecho é executado várias vezes até que uma condição seja satisfeita.
+    *Exemplo: "**enquanto** você não atravessar a catraca, continue caminhando".*
+
+!!! tip "Ligue a teoria aos desafios"
+    Repare que os três exercícios desta aula usam exatamente essas estruturas: a **travessia do rio** é uma *sequência* de passos com restrições; a **compra online** mistura *sequência* e *decisões*; e a **navegação até o metrô** só termina quando uma condição é atingida — uma *repetição*.
+
+---
+
+## 🗺️ Estado, Restrições e Invariantes
+
+Nem todo problema se resolve "só seguindo em frente". Alguns exigem que você acompanhe o **estado** — a fotografia da situação em cada momento — e respeite **restrições** que nunca podem ser violadas.
+
+No **desafio da travessia**, o estado é *quem está em cada margem do rio*. A cada viagem esse estado muda, e existe uma regra que precisa valer o tempo todo (uma *invariante*):
+
+> "O lobo nunca pode ficar sozinho com a cabra, e a cabra nunca pode ficar sozinha com a couve."
+
+!!! example "Pensando por estados"
+    | Margem esquerda        | Barco →        | Margem direita     |
+    | :--------------------- | :------------- | :----------------- |
+    | lobo, cabra, couve     | (início)       | —                  |
+    | lobo, couve            | leva a cabra → | cabra              |
+    | ...                    | ...            | ...                |
+
+    A cada linha, pergunte-se: **"alguma restrição foi violada?"** Se sim, esse passo é inválido e você precisa voltar atrás.
+
+Essa ideia de "testar se uma regra continua válida a cada passo" é a semente da **validação** que você fará em código (por exemplo, checar o saldo antes de confirmar a compra).
+
+---
+
 ## ⚠️ Erros Comuns de Lógica
 
 !!! danger "Cuidado com o Loop Infinito"
     Um erro clássico é esquecer de dar uma condição de parada para o computador.
     *Exemplo: "Ande para frente enquanto não bater na parede", mas você está em um campo aberto.*
+
+!!! danger "Passos ambíguos ou fora de ordem"
+    O computador é literal: "coloque o ovo na frigideira" antes de "acenda o fogo" produz um resultado bem diferente. Ao escrever seu algoritmo, garanta que **cada passo tenha um único sentido** e que a **ordem** faça sentido.
 
 ---
 
@@ -140,6 +185,18 @@ Antes de executar, simule o algoritmo manualmente.
     - O algoritmo só termina quando você atravessar a catraca da estação.
 
     **Tarefa:** Escreva o passo a passo detalhando o trajeto e as decisões que você deve tomar no caminho.
+
+---
+
+## 📚 Referências
+
+Para aprofundar os conceitos desta aula, consulte:
+
+- **FORBELLONE, A. L. V.; EBERSPÄCHER, H. F.** *Lógica de Programação: A Construção de Algoritmos e Estruturas de Dados.* 3. ed. São Paulo: Pearson Prentice Hall, 2005. — Cap. 1 (Introdução à lógica e ao conceito de algoritmo).
+- **ASCENCIO, A. F. G.; CAMPOS, E. A. V. de.** *Fundamentos da Programação de Computadores.* 3. ed. São Paulo: Pearson, 2012. — Cap. 1.
+- **WING, J. M.** "Computational Thinking." *Communications of the ACM*, v. 49, n. 3, 2006. — Artigo que popularizou o termo *pensamento computacional*.
+- **PINE, C.** *Learn to Program.* 2. ed. Pragmatic Bookshelf, 2009. — Leitura introdutória e leve.
+- Wikipédia (PT): [Algoritmo](https://pt.wikipedia.org/wiki/Algoritmo) · [Pensamento computacional](https://pt.wikipedia.org/wiki/Pensamento_computacional).
 
 ---
 

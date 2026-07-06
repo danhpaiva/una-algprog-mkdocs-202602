@@ -110,6 +110,41 @@ FimAlgoritmo
 
 ---
 
+## 🐞 6. Erros de Precedência (o bug silencioso)
+
+O bug mais traiçoeiro não é o que trava o programa — é o que **roda e dá o resultado errado**. O campeão dessa categoria é esquecer os parênteses numa fórmula:
+
+=== "❌ Errado"
+    ```
+    media <- nota1 + nota2 / 2
+    ```
+    Como `/` tem prioridade sobre `+`, o computador calcula `nota2 / 2` **primeiro** e só depois soma `nota1`. Para notas 8 e 6 o resultado é `8 + 3 = 11` — impossível!
+
+=== "✅ Correto"
+    ```
+    media <- (nota1 + nota2) / 2
+    ```
+    Os parênteses forçam a soma a acontecer antes da divisão: `(8 + 6) / 2 = 7`.
+
+!!! danger "Como esse bug se esconde"
+    O programa não acusa erro nenhum: ele apenas devolve um número **plausível, mas errado**. É exatamente o cenário do Exercício 3 (Caça ao Bug). A defesa é fazer o **teste de mesa** com um exemplo cujo resultado você já conhece.
+
+---
+
+## 🧹 7. Como Refatorar um Código
+
+*Refatorar* é melhorar a forma **sem** mudar o que o código faz. Um roteiro prático (útil no Exercício 1):
+
+1. **Entenda** o que o código faz (leia e faça o teste de mesa).
+2. **Renomeie** variáveis para nomes que contam a história.
+3. **Indente** os blocos para revelar a estrutura.
+4. **Confirme** que o resultado continua o mesmo com os mesmos dados de entrada.
+
+!!! info "Regra de ouro da refatoração"
+    Mude **uma coisa de cada vez** e verifique. Se você renomeia e reindenta tudo de uma vez e o resultado muda, fica difícil saber o que quebrou.
+
+---
+
 ## ✅ Checklist do Código Limpo
 
 !!! check "Antes de considerar um algoritmo 'pronto'"
@@ -117,6 +152,7 @@ FimAlgoritmo
     - [ ] O código está indentado corretamente?
     - [ ] Fiz o teste de mesa com pelo menos dois exemplos?
     - [ ] Removi comentários inúteis e mantive só os que explicam o "porquê"?
+    - [ ] Usei parênteses para deixar a ordem dos cálculos explícita?
     - [ ] Todos os caminhos do algoritmo têm um fim?
 
 ---
@@ -149,6 +185,15 @@ FimAlgoritmo
     ```
     media <- nota1 + nota2 / 2
     ```
+
+---
+
+## 📚 Referências
+
+- **MARTIN, R. C.** *Código Limpo: Habilidades Práticas do Agile Software.* Rio de Janeiro: Alta Books, 2009. — Leitura de referência sobre nomes, funções e legibilidade.
+- **FOWLER, M.** *Refatoração: Aperfeiçoando o Design de Códigos Existentes.* 2. ed. Novatec, 2020.
+- **HUNT, A.; THOMAS, D.** *O Programador Pragmático.* Bookman, 2010. — Princípios DRY e boas práticas.
+- **FORBELLONE, A. L. V.; EBERSPÄCHER, H. F.** *Lógica de Programação.* 3. ed. Pearson, 2005. — Teste de mesa.
 
 ---
 

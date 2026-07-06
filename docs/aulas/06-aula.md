@@ -93,6 +93,52 @@ Misturar tipos pode dar resultados inesperados:
 
 ---
 
+## 🧭 Um Guia Rápido para Escolher o Tipo
+
+Na hora de **classificar um dado** (Exercício 1), faça três perguntas nesta ordem:
+
+1. **Vou fazer contas com ele?** Se não (CEP, e-mail, telefone, placa) → `caractere`.
+2. **Precisa de casas decimais?** Sim (salário, temperatura, altura) → `real`; não (número de filhos, idade, quantidade) → `inteiro`.
+3. **Só tem duas respostas (sim/não)?** → `logico`.
+
+!!! example "Aplicando ao Exercício 1"
+    | Dado                          | Tipo adequado | Por quê                              |
+    | :---------------------------- | :------------ | :----------------------------------- |
+    | número de filhos              | `inteiro`     | contagem sem decimais                |
+    | salário                       | `real`        | tem centavos                         |
+    | e-mail                        | `caractere`   | é texto, não se calcula              |
+    | "possui carteira de motorista"| `logico`      | só sim ou não                        |
+    | temperatura                   | `real`        | tem casas decimais                   |
+    | CEP                           | `caractere`   | pode ter zero à esquerda             |
+
+---
+
+## 🗃️ Trabalhando com Registros na Prática
+
+Um registro descreve **uma entidade** com campos de tipos diferentes. Depois de declarar, cada campo é acessado com um **ponto** (`.`). Esse é o esqueleto da **Ficha do Cliente** (Exercício 2):
+
+```
+Var
+    cliente: registro
+        nome: caractere
+        idade: inteiro
+        limite: real
+        ativo: logico
+    FimRegistro
+Inicio
+    cliente.nome   <- "João"
+    cliente.idade  <- 30
+    cliente.limite <- 1500.00
+    cliente.ativo  <- verdadeiro
+
+    Escreval("Cliente: ", cliente.nome, " | Limite: R$ ", cliente.limite)
+```
+
+!!! note "Registro é 'uma coisa'; vetor é 'muitas coisas iguais'"
+    Use **registro** quando os campos são *diferentes* mas descrevem a mesma entidade (nome, idade, limite). Use **vetor** quando você tem *vários valores do mesmo tipo* — como as 5 notas do Exercício 3, que percorremos com um laço para somar.
+
+---
+
 ## 📝 Desafios
 
 ??? abstract "Exercício 1: Classificando Dados"
@@ -104,6 +150,15 @@ Misturar tipos pode dar resultados inesperados:
 
 ??? abstract "Exercício 3: Média de um Vetor"
     Crie um vetor de 5 posições do tipo real, leia 5 notas e exiba a soma delas.
+
+---
+
+## 📚 Referências
+
+- **ASCENCIO, A. F. G.; CAMPOS, E. A. V. de.** *Fundamentos da Programação de Computadores.* 3. ed. Pearson, 2012. — Tipos de dados e estruturas homogêneas/heterogêneas.
+- **FORBELLONE, A. L. V.; EBERSPÄCHER, H. F.** *Lógica de Programação.* 3. ed. Pearson, 2005. — Tipos primitivos e registros.
+- **TENENBAUM, A. M.; LANGSAM, Y.; AUGENSTEIN, M. J.** *Estruturas de Dados Usando C.* Pearson, 1995. — Fundamentos de tipos compostos.
+- Wikipédia (PT): [Tipo de dado](https://pt.wikipedia.org/wiki/Tipo_de_dado) · [Registro (estrutura de dados)](https://pt.wikipedia.org/wiki/Registro_(estrutura_de_dados)).
 
 ---
 

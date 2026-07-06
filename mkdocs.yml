@@ -52,6 +52,7 @@ theme:
 nav:
   - Home: index.md
   # - Guia do Professor: setup.md
+  - 🧰 Ferramentas: ferramentas.md
   - 📖 Aulas:
       - 01. Pensamento Computacional e Lógica: aulas/01-aula.md
       - 02. Lógica de Programação e Fluxogramas: aulas/02-aula.md

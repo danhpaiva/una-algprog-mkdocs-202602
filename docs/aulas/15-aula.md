@@ -119,6 +119,98 @@ Inicio
 
 ---
 
+## ✍️ Sobrescrita de Métodos (Override)
+
+Quando a subclasse reescreve um método que herdou da mãe, dizemos que ela **sobrescreve** (*override*) esse método. É o mecanismo por trás do polimorfismo e a peça central dos exercícios de **Formas Geométricas** e **Veículos**:
+
+```
+Classe Veiculo
+    marca: caractere
+    velocidade: inteiro
+
+    Procedimento descrever()
+    Inicio
+        Escreval("Veículo ", marca, " a ", velocidade, " km/h")
+    FimProcedimento
+FimClasse
+
+Classe Moto herda de Veiculo
+    Procedimento descrever()        // sobrescreve a versão da mãe
+    Inicio
+        Escreval("Moto ", marca, " acelerando a ", velocidade, " km/h 🏍️")
+    FimProcedimento
+FimClasse
+```
+
+!!! info "Herdar, adicionar ou sobrescrever"
+    Uma subclasse pode: **herdar** um método sem mudanças, **adicionar** métodos novos, ou **sobrescrever** um método existente para dar seu próprio comportamento. As três coisas convivem na mesma classe.
+
+---
+
+## 🔷 Classe-Base como "Contrato"
+
+No exercício das **Formas Geométricas**, a classe `Forma` define que *toda forma sabe calcular sua área* — mas só cada subclasse conhece a fórmula certa. A classe-base funciona como um **contrato** que as filhas se comprometem a cumprir:
+
+```
+Classe Forma
+    Funcao calcularArea(): real
+    Inicio
+        Retorne 0        // genérico; cada forma define o seu
+    FimFuncao
+FimClasse
+
+Classe Circulo herda de Forma
+    raio: real
+    Funcao calcularArea(): real
+    Inicio
+        Retorne 3.14159 * raio * raio
+    FimFuncao
+FimClasse
+
+Classe Quadrado herda de Forma
+    lado: real
+    Funcao calcularArea(): real
+    Inicio
+        Retorne lado * lado
+    FimFuncao
+FimClasse
+```
+
+Assim você pode tratar um círculo e um quadrado **como `Forma`** e chamar `calcularArea()` em ambos, deixando cada um responder do seu jeito — polimorfismo puro.
+
+---
+
+## 🔗 Objetos que Colaboram (Herança vs. Composição)
+
+Nem toda relação é de herança. O **Sistema de Biblioteca** (Projeto final) tem `Livro` e `Usuario` que **colaboram**, mas um não *é* o outro — isso é **composição** ("tem um"), não herança ("é um"):
+
+```
+Classe Livro
+    titulo: caractere
+    disponivel: logico
+
+    Procedimento emprestar()
+    Inicio
+        Se (disponivel) entao
+            disponivel <- falso
+            Escreval("Empréstimo realizado")
+        Senao
+            Escreval("Livro indisponível")
+        FimSe
+    FimProcedimento
+
+    Procedimento devolver()
+    Inicio
+        disponivel <- verdadeiro
+    FimProcedimento
+FimClasse
+```
+
+!!! tip "Como decidir entre herança e composição"
+    Teste a frase: se "**X é um Y**" faz sentido (Círculo é uma Forma), use **herança**. Se "**X tem um Y**" ou "X usa Y" descreve melhor (uma Biblioteca *tem* Livros), use **composição**. Na dúvida, prefira composição — ela costuma deixar o sistema mais flexível.
+
+---
+
 ## 🎓 Encerramento da Disciplina
 
 Você começou sem saber o que era um algoritmo e agora modela sistemas orientados a objetos. Esse é o caminho:
@@ -148,6 +240,16 @@ graph LR
 
 ??? abstract "Exercício 3: Sistema de Biblioteca (Projeto)"
     Modele as classes `Livro` (título, autor, disponível) e `Usuario` (nome). Crie métodos `emprestar()` e `devolver()` que alterem a disponibilidade do livro (encapsulamento + regras de negócio).
+
+---
+
+## 📚 Referências
+
+- **DEITEL, P.; DEITEL, H.** *Java: Como Programar.* 10. ed. Pearson, 2016. — Herança, polimorfismo e classes abstratas.
+- **BARNES, D. J.; KÖLLING, M.** *Programação Orientada a Objetos com Java.* Pearson.
+- **GAMMA, E. et al.** *Padrões de Projeto (Design Patterns).* Bookman, 2000. — Aprofundamento: "prefira composição a herança".
+- **SEBESTA, R. W.** *Conceitos de Linguagens de Programação.* 11. ed. Bookman, 2018.
+- Wikipédia (PT): [Herança (programação)](https://pt.wikipedia.org/wiki/Heran%C3%A7a_(programa%C3%A7%C3%A3o)) · [Polimorfismo (ciência da computação)](https://pt.wikipedia.org/wiki/Polimorfismo_(ci%C3%AAncia_da_computa%C3%A7%C3%A3o)).
 
 ---
 

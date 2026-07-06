@@ -85,6 +85,62 @@ Lembra da escola? O computador também segue a ordem de importância. Se você f
 
 ---
 
+## ↔️ Atribuição, Entrada e Saída
+
+Três operações aparecem em quase todo algoritmo — e é importante não confundi-las:
+
+| Operação      | Símbolo / Comando | O que faz                                          |
+| :------------ | :---------------- | :------------------------------------------------- |
+| **Atribuição**| `<-`              | Guarda um valor (ou o resultado de um cálculo) numa variável. |
+| **Entrada**   | `Leia(...)`       | Recebe um valor digitado pelo usuário.             |
+| **Saída**     | `Escreva/Escreval`| Mostra informação na tela.                         |
+
+A atribuição sempre calcula **primeiro o lado direito** e só depois guarda na variável da esquerda. Por isso `total <- valor + valor * 0.10` funciona: o cálculo inteiro acontece antes de o resultado ir para `total`.
+
+!!! example "O que a máquina faz em `dolares <- reais / cotacao`"
+    1. Pega o valor atual de `reais`.
+    2. Pega o valor atual de `cotacao`.
+    3. Divide um pelo outro.
+    4. **Só então** guarda o resultado em `dolares`.
+
+Esse é exatamente o raciocínio do **Conversor de Moedas** (Exercício 1).
+
+---
+
+## 💯 Calculando Porcentagens
+
+Porcentagem cai em muitos problemas do dia a dia (gorjeta, desconto, imposto). A regra é simples: **X% de um valor = valor × (X / 100)**.
+
+```
+taxa_servico <- valor_consumo * 0.10   // 10%
+valor_total  <- valor_consumo + taxa_servico
+```
+
+!!! tip "Atalho mental"
+    Para achar 10%, multiplique por `0.10`. Para 15%, por `0.15`. Para acrescentar uma porcentagem ao valor original de uma vez só, use `valor * 1.10` (o valor + 10%). Isso resolve o **Garçom Amigo** (Exercício 2).
+
+---
+
+## ➗ Divisão Real, Divisão Inteira e Resto
+
+O operador `/` faz a divisão "de verdade" (com casas decimais), desde que as variáveis sejam `real`:
+
+```
+media <- (nota1 + nota2) / 2   // 7 e 8 → 7.5
+```
+
+Já o operador `%` (ou `mod`) devolve **o que sobra** de uma divisão inteira — útil para saber se um número é par, múltiplo, etc.:
+
+```
+resto <- 7 % 3    // resto = 1
+ehPar <- (numero % 2)   // 0 → par ; 1 → ímpar
+```
+
+!!! warning "Cuidado com o tipo"
+    Se você declarar variáveis como `inteiro` e dividir, pode perder a parte decimal. Para a fórmula da área do triângulo `(base * altura) / 2` (Exercício 3), use variáveis `real` para não descartar as casas decimais.
+
+---
+
 ## 📝 Desafios de Lógica Matemática
 
 ??? abstract "Exercício 1: Conversor de Moedas"
@@ -108,6 +164,15 @@ Lembra da escola? O computador também segue a ordem de importância. Se você f
 
     * Fórmula: $Area = \frac{base \cdot altura}{2}$
     * O programa deve ler a base, a altura e mostrar o resultado final.
+
+---
+
+## 📚 Referências
+
+- **ASCENCIO, A. F. G.; CAMPOS, E. A. V. de.** *Fundamentos da Programação de Computadores.* 3. ed. Pearson, 2012. — Cap. 2 (Variáveis, constantes e expressões aritméticas).
+- **FORBELLONE, A. L. V.; EBERSPÄCHER, H. F.** *Lógica de Programação.* 3. ed. Pearson, 2005. — Cap. 3.
+- **MANZANO, J. A. N. G.** *Estudo Dirigido de Algoritmos.* São Paulo: Érica. — Tipos de dados e operadores no VisuAlg.
+- Wikipédia (PT): [Variável (programação)](https://pt.wikipedia.org/wiki/Vari%C3%A1vel_(programa%C3%A7%C3%A3o)) · [Operação módulo](https://pt.wikipedia.org/wiki/Opera%C3%A7%C3%A3o_m%C3%B3dulo).
 
 ---
 

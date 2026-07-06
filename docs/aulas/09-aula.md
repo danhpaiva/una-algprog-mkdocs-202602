@@ -110,6 +110,44 @@ FimAlgoritmo
 
 ---
 
+## 🔧 A Anatomia de Todo Laço
+
+Independentemente da estrutura, um laço que funciona sempre tem **três ingredientes**. Esquecer qualquer um deles é a fonte da maioria dos bugs de repetição:
+
+1. **Inicialização** — preparar a variável de controle *antes* do laço (`i <- 1`, `soma <- 0`).
+2. **Condição de parada** — a pergunta que decide se continua (`i <= 10`, `numero <> 0`).
+3. **Atualização** — o passo que aproxima o laço do fim, *dentro* do bloco (`i <- i + 1`, ou ler um novo valor).
+
+!!! example "Localize os três na tabuada (Exercício 1)"
+    ```
+    i <- 1                                  // 1. inicialização
+    Enquanto (i <= 10) faca                 // 2. condição
+        Escreval(numero, " x ", i, " = ", numero * i)
+        i <- i + 1                          // 3. atualização
+    FimEnquanto
+    ```
+
+---
+
+## ✅ Validação de Entrada com `Repita`
+
+Quando você precisa **insistir** até o usuário digitar algo válido, o `Repita` é a escolha natural: ele pergunta pelo menos uma vez e só sai quando o dado for aceitável. É o coração dos exercícios de **Menu** (Ex. 3) e **Validação de Nota** (Ex. 4):
+
+```
+Repita
+    Escreva("Digite uma nota de 0 a 10: ")
+    Leia(nota)
+    Se (nota < 0) ou (nota > 10) entao
+        Escreval("Valor inválido! Tente de novo.")
+    FimSe
+Ate (nota >= 0) e (nota <= 10)
+```
+
+!!! tip "Menu que repete até 'Sair'"
+    O mesmo padrão monta um menu: repita a exibição das opções e a leitura da escolha **até** o usuário selecionar a opção de sair.
+
+---
+
 ## 📝 Desafios
 
 ??? abstract "Exercício 1: Tabuada"
@@ -123,6 +161,15 @@ FimAlgoritmo
 
 ??? abstract "Exercício 4: Validação de Nota"
     Peça uma nota de 0 a 10. Enquanto o valor for inválido, peça novamente.
+
+---
+
+## 📚 Referências
+
+- **FORBELLONE, A. L. V.; EBERSPÄCHER, H. F.** *Lógica de Programação.* 3. ed. Pearson, 2005. — Cap. 5 (Estruturas de repetição).
+- **ASCENCIO, A. F. G.; CAMPOS, E. A. V. de.** *Fundamentos da Programação de Computadores.* 3. ed. Pearson, 2012. — Laços condicionais.
+- **DEITEL, P.; DEITEL, H.** *Java: Como Programar.* 10. ed. Pearson, 2016. — `while` e `do...while`.
+- Wikipédia (PT): [Laço (programação)](https://pt.wikipedia.org/wiki/La%C3%A7o_(programa%C3%A7%C3%A3o)).
 
 ---
 

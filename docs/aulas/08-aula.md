@@ -98,6 +98,57 @@ FimAlgoritmo
 
 ---
 
+## 🔤 `Escolha` com Letras e Vários Valores por Caso
+
+O `Escolha` não serve só para números: ele funciona muito bem com **caracteres**, o que resolve o **Conceito por Letra** (Exercício 4):
+
+```
+Escolha (conceito)
+    Caso "A"
+        Escreva("Excelente")
+    Caso "B"
+        Escreva("Bom")
+    Caso "C"
+        Escreva("Regular")
+    Caso "D", "F"          // dois valores no mesmo caso
+        Escreva("Insuficiente")
+    OutroCaso
+        Escreva("Conceito inválido")
+FimEscolha
+```
+
+Repare no `Caso "D", "F"`: quando **vários valores levam à mesma ação**, você pode agrupá-los, evitando repetição.
+
+---
+
+## 🧮 Combinando `Escolha` com Cálculos
+
+Na **Calculadora Simples** (Exercício 1) e no **Menu de Conversão** (Exercício 2), cada caso executa uma operação diferente sobre os mesmos dados lidos:
+
+```
+Escolha (operador)
+    Caso 1
+        resultado <- a + b
+    Caso 2
+        resultado <- a - b
+    Caso 3
+        resultado <- a * b
+    Caso 4
+        Se (b <> 0) entao
+            resultado <- a / b
+        Senao
+            Escreva("Erro: divisão por zero!")
+        FimSe
+    OutroCaso
+        Escreva("Operação inválida")
+FimEscolha
+```
+
+!!! warning "Divisão por zero"
+    Toda vez que houver uma divisão, verifique antes se o divisor é diferente de zero. Dividir por zero é um erro que derruba o programa em qualquer linguagem.
+
+---
+
 ## 📝 Desafios
 
 ??? abstract "Exercício 1: Calculadora Simples"
@@ -111,6 +162,15 @@ FimAlgoritmo
 
 ??? abstract "Exercício 4: Conceito por Letra"
     Leia uma letra (A, B, C, D, F) e exiba a mensagem correspondente ao conceito escolar.
+
+---
+
+## 📚 Referências
+
+- **FORBELLONE, A. L. V.; EBERSPÄCHER, H. F.** *Lógica de Programação.* 3. ed. Pearson, 2005. — Estrutura de seleção múltipla.
+- **ASCENCIO, A. F. G.; CAMPOS, E. A. V. de.** *Fundamentos da Programação de Computadores.* 3. ed. Pearson, 2012.
+- **DEITEL, P.; DEITEL, H.** *Java: Como Programar.* 10. ed. Pearson, 2016. — A instrução `switch`.
+- Wikipédia (PT): [Switch (programação)](https://pt.wikipedia.org/wiki/Switch_(programa%C3%A7%C3%A3o)).
 
 ---
 

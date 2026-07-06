@@ -98,6 +98,58 @@ FimSe
 
 ---
 
+## 🏆 Encontrando o Maior entre Vários Valores
+
+Descobrir "quem é o maior" é um padrão que aparece o tempo todo (inclusive no **Maior de Três**, Exercício 2). Há duas estratégias:
+
+=== "Comparações encadeadas"
+    ```
+    Se (a >= b) e (a >= c) entao
+        Escreva("Maior: ", a)
+    Senao Se (b >= c) entao
+        Escreva("Maior: ", b)
+    Senao
+        Escreva("Maior: ", c)
+    FimSe
+    ```
+
+=== "Variável 'campeã' (escala melhor)"
+    ```
+    maior <- a
+    Se (b > maior) entao
+        maior <- b
+    FimSe
+    Se (c > maior) entao
+        maior <- c
+    FimSe
+    Escreva("Maior: ", maior)
+    ```
+
+!!! tip "Por que a segunda forma é preferível"
+    A ideia de "guardar o campeão e desafiá-lo" funciona para 3 ou para 3000 valores — basta um laço. Você vai reencontrá-la ao percorrer vetores (Aula 11).
+
+---
+
+## 📦 Faixas de Classificação (revisão aplicada)
+
+Problemas como o **IMC** (Exercício 3) pedem que o resultado caia em **uma entre várias faixas**. A receita é o encadeamento `Se ... Senao Se`, sempre do limite **menor para o maior** (ou vice-versa), sem sobreposição:
+
+```
+Se (imc < 18.5) entao
+    Escreva("Abaixo do peso")
+Senao Se (imc <= 24.9) entao
+    Escreva("Peso normal")
+Senao Se (imc <= 29.9) entao
+    Escreva("Sobrepeso")
+Senao
+    Escreva("Obesidade")
+FimSe
+```
+
+Como cada faixa está num `Senao`, quando uma condição é verdadeira as demais nem são testadas — o valor cai em **exatamente uma** categoria.
+
+---
+
 ## ⚠️ Erros Clássicos
 
 !!! danger "Cuidado"
@@ -121,6 +173,15 @@ FimSe
 
 ??? abstract "Exercício 4: Login Simples"
     Leia usuário e senha. Se usuário for "admin" **e** senha for "1234", exiba "Acesso liberado"; senão, "Acesso negado".
+
+---
+
+## 📚 Referências
+
+- **FORBELLONE, A. L. V.; EBERSPÄCHER, H. F.** *Lógica de Programação.* 3. ed. Pearson, 2005. — Cap. 4 (Estruturas de seleção).
+- **ASCENCIO, A. F. G.; CAMPOS, E. A. V. de.** *Fundamentos da Programação de Computadores.* 3. ed. Pearson, 2012. — Estruturas de decisão.
+- **DEITEL, P.; DEITEL, H.** *Java: Como Programar.* 10. ed. Pearson, 2016. — Estruturas de controle de seleção.
+- Wikipédia (PT): [Estrutura de controle](https://pt.wikipedia.org/wiki/Estrutura_de_controle).
 
 ---
 

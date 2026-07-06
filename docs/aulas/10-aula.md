@@ -117,6 +117,72 @@ FimPara
 
 ---
 
+## 🔄 De `Enquanto` para `Para` (e vice-versa)
+
+Como todo `Para` guarda os três ingredientes do laço numa linha só, converter um `Enquanto` em `Para` é quase mecânico — útil para reescrever a **tabuada** (Exercício 1):
+
+=== "Com Enquanto"
+    ```
+    i <- 1
+    Enquanto (i <= 10) faca
+        Escreval(numero, " x ", i, " = ", numero * i)
+        i <- i + 1
+    FimEnquanto
+    ```
+
+=== "Com Para (mais enxuto)"
+    ```
+    Para i de 1 ate 10 faca
+        Escreval(numero, " x ", i, " = ", numero * i)
+    FimPara
+    ```
+
+A inicialização (`i <- 1`), a condição (`i <= 10`) e a atualização (`i <- i + 1`) foram todas absorvidas pelo cabeçalho do `Para`.
+
+---
+
+## 👣 Usando o `passo` para os Pares
+
+Para a **Soma dos Pares** (Exercício 2), há duas estratégias equivalentes:
+
+=== "Testando cada número"
+    ```
+    soma <- 0
+    Para i de 1 ate 100 faca
+        Se (i % 2 = 0) entao
+            soma <- soma + i
+        FimSe
+    FimPara
+    ```
+
+=== "Andando de 2 em 2 (mais direto)"
+    ```
+    soma <- 0
+    Para i de 2 ate 100 passo 2 faca
+        soma <- soma + i
+    FimPara
+    ```
+
+---
+
+## 🔳 Entendendo Laços Aninhados
+
+Num laço aninhado, o laço **interno completa todas as suas voltas** para *cada* volta do externo. É por isso que ele desenha "tabelas": o externo escolhe a linha, o interno preenche as colunas. Essa é a chave da **Tabuada Completa** (Exercício 5):
+
+```
+Para tabua de 1 ate 5 faca              // escolhe qual tabuada
+    Escreval("--- Tabuada do ", tabua, " ---")
+    Para i de 1 ate 10 faca             // percorre 1 a 10
+        Escreval(tabua, " x ", i, " = ", tabua * i)
+    FimPara
+FimPara
+```
+
+!!! info "Conta rápida"
+    Um laço externo de 5 voltas com um interno de 10 executa o bloco de dentro **5 × 10 = 50** vezes.
+
+---
+
 ## 📝 Desafios
 
 ??? abstract "Exercício 1: Tabuada com For"
@@ -133,6 +199,15 @@ FimPara
 
 ??? abstract "Exercício 5: Tabuada Completa (aninhado)"
     Use laços aninhados para exibir as tabuadas de 1 a 5, todas de uma vez.
+
+---
+
+## 📚 Referências
+
+- **FORBELLONE, A. L. V.; EBERSPÄCHER, H. F.** *Lógica de Programação.* 3. ed. Pearson, 2005. — Estrutura de repetição com variável de controle.
+- **ASCENCIO, A. F. G.; CAMPOS, E. A. V. de.** *Fundamentos da Programação de Computadores.* 3. ed. Pearson, 2012. — Laço `para` e laços aninhados.
+- **DEITEL, P.; DEITEL, H.** *Java: Como Programar.* 10. ed. Pearson, 2016. — `for` e `for-each` (`enhanced for`).
+- Wikipédia (PT): [Estrutura de repetição](https://pt.wikipedia.org/wiki/Estrutura_de_repeti%C3%A7%C3%A3o).
 
 ---
 
